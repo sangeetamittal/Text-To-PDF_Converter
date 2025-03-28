@@ -1,0 +1,32 @@
+<html>
+
+<head>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <!-- <script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script> -->
+    <style>
+        @page {
+            size: A4;
+            margin: 20mm;
+        }
+
+        body {
+            padding: 20px;
+            margin: 20px;
+        }
+
+        .ql-editor {
+            overflow: visible !important;
+            word-wrap: break-word;
+        }
+
+    </style>
+</head>
+
+<body>
+    <!-- Render content inside Quill's formatting container -->
+    <div class="ql-editor">
+        {{content}}
+    </div>
+</body>
+
+</html>
