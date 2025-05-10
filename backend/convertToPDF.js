@@ -5,8 +5,11 @@ const path = require("path");
 exports.generatePDF = async (req, res) => {
     const { html } = req.body;
     const pdfFilePath = path.join(__dirname, "document.pdf"); // Store in backend
+    const templatePath = path.join(__dirname, "Templates/Acknowledgements/Ack3.html"); // Path to the template file
+    // const templatePath = path.join(__dirname, "Templates/Acknowledgements/Ack2.html"); // Path to the template file
+    // const templatePath = path.join(__dirname, "Templates/Acknowledgements/Ack1.html"); // Path to the template file
     // const templatePath = path.join(__dirname, "template1.html"); // Path to the template file
-    const templatePath = path.join(__dirname, "t2.html"); // Path to the template file
+    // const templatePath = path.join(__dirname, "t2.html"); // Path to the template file
 
     console.log("📩 Received request to generate PDF");
 

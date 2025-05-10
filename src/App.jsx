@@ -1,6 +1,6 @@
 // import { useState } from "react";
 import "./App.css";
-import CoverDesign from "./Components/Dashboard/CoverDesign/CoverDesign";
+// import CoverDesign from "./Components/Dashboard/CoverDesign/CoverDesign";
 
 
 // import {
@@ -11,7 +11,7 @@ import CoverDesign from "./Components/Dashboard/CoverDesign/CoverDesign";
 // } from "react-router-dom";
 // import Auth from "./Components/Auth";
 // import Navbar from "./Components/Navbar";
-// import QuillEditor from "./Components/Editor";
+import QuillEditor from "./Components/Editor";
 // import Dashboard from "./Components/Dashboard/Dashboard";
 // import BookInformation from "./Components/Dashboard/BookInformation/BookInformation";
 // import DesignGenre from "./Components/Dashboard/Design_and_Genre/Design_and_Genre";
@@ -24,7 +24,7 @@ function App() {
   // const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
-    <CoverDesign/>
+    <QuillEditor/>
     // <Router>
     //   <Routes>
     //     {/* If not logged in, show Auth and prevent access to other routes */}
