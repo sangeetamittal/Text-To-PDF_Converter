@@ -10,7 +10,7 @@ const QuillEditor = () => {
 
   useEffect(() => {
     if (editorRef.current) {
-      console.log("Initializing Quill Editor..."); // ✅ Debug: Check if Quill initializes
+      console.log("Initializing Quill Editor..."); //Debug: Check if Quill initializes
 
       quillInstance.current = new Quill(editorRef.current, {
         theme: "snow",
@@ -33,34 +33,34 @@ const QuillEditor = () => {
         },
       });
 
-      console.log("Quill Editor initialized successfully!"); // ✅ Debug: Confirm Quill is ready
+      console.log("Quill Editor initialized successfully!"); //Debug: Confirm Quill is ready
     }
   }, []);
 
   const handleGeneratePDF = async () => {
     if (!quillInstance.current) {
-      console.error("Quill instance is not initialized!"); // ❌ Debug: Quill not found
+      console.error("Quill instance is not initialized!"); //Debug: Quill not found
       return;
     }
 
     const content = quillInstance.current.root.innerHTML;
-    console.log("Captured HTML Content:", content); // ✅ Debug: Check if Quill content is correctly captured
+    console.log("Captured HTML Content:", content); //Debug: Check if Quill content is correctly captured
 
     if (!content.trim()) {
       alert("Please enter some text before generating the PDF!");
-      console.warn("No content entered in Quill editor!"); // ❌ Debug: Empty content issue
+      console.warn("No content entered in Quill editor!"); //Debug: Empty content issue
       return;
     }
 
     setLoading(true);
     try {
-      console.log("Sending request to backend..."); // ✅ Debug: Check if request is made
+      console.log("Sending request to backend..."); //Debug: Check if request is made
 
       const response = await axios.post("http://localhost:5000/generate-pdf", { html: content }, {
         responseType: "blob", // Expect binary response
       });
 
-      console.log("Received PDF response from backend:", response); // ✅ Debug: Confirm backend response
+      console.log("Received PDF response from backend:", response); //Debug: Confirm backend response
 
       // Create a blob URL and trigger download
       const url = window.URL.createObjectURL(new Blob([response.data], { type: "application/pdf" }));
@@ -72,9 +72,9 @@ const QuillEditor = () => {
       link.click();
       document.body.removeChild(link);
 
-      console.log("PDF downloaded successfully!"); // ✅ Debug: Confirm file download
+      console.log("PDF downloaded successfully!"); //Debug: Confirm file download
     } catch (error) {
-      console.error("PDF generation failed:", error); // ❌ Debug: Check backend errors
+      console.error("PDF generation failed:", error); //Debug: Check backend errors
       alert("Failed to generate PDF. Please try again.");
     }
     setLoading(false);
@@ -82,7 +82,7 @@ const QuillEditor = () => {
 
   const handleViewPDF = async () => {
     try {
-      console.log("Fetching generated PDF from backend..."); // ✅ Debugging step
+      console.log("Fetching generated PDF from backend..."); //Debugging step
 
       const response = await fetch("http://localhost:5000/get-pdf", {
         method: "GET",
@@ -96,7 +96,7 @@ const QuillEditor = () => {
       const url = URL.createObjectURL(blob);
 
       window.open(url, "_blank"); // Opens PDF in a new tab
-      console.log("PDF opened successfully!"); // ✅ Debugging step
+      console.log("PDF opened successfully!"); //Debugging step
     } catch (error) {
       console.error("Error fetching PDF:", error);
       alert("Failed to fetch the PDF. Please try again.");

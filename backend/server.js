@@ -12,24 +12,6 @@ app.use(bodyParser.json());
 
 let users = []; // Temporary storage
 
-app.post("/register", (req, res) => {
-    const { email, password } = req.body;
-    users.push({ email, password });
-    console.log("Current Users:", users);
-    res.status(201).json({ message: "User registered successfully!", users  });
-});
-
-app.post("/login", (req, res) => {
-    const { email, password } = req.body;
-    console.log("Users in database:", users);
-    const user = users.find((u) => u.email.trim() === email.trim() && u.password === password);
-    if (user) {
-        res.json({ message: "Login successful!" });
-    } else {
-        res.status(401).json({ message: "Invalid credentials!" });
-    }
-});
-
 app.post("/generate-pdf", generatePDF);
 
 const pdfFilePath = path.join(__dirname, "document.pdf"); // Adjust path as needed
