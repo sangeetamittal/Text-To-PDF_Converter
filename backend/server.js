@@ -4,11 +4,24 @@ const fs = require("fs");
 const path = require("path");
 const bodyParser = require('body-parser');
 const { generatePDF } = require('./convertToPDF');
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
+
+// Serve static files from backend/dist
+app.use(express.static(path.join(__dirname, "dist")));
+
+// example API route
+app.get("/api/hello", (req, res) => {
+  res.json({ message: "Hello from Express!" });
+});
+
+// catch-all to serve index.html for SPA routing
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
+});
 
 let users = []; // Temporary storage
 
@@ -29,4 +42,4 @@ app.get("/get-pdf", (req, res) => {
   fileStream.pipe(res);
 });
 
-app.listen(5000, () => console.log(`Server running on http://localhost:${PORT}`));
+app.listen(PORT, () => console.log(`Server running on ${PORT}`));

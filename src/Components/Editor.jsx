@@ -56,7 +56,7 @@ const QuillEditor = () => {
     try {
       console.log("Sending request to backend..."); //Debug: Check if request is made
 
-      const response = await axios.post("http://localhost:5000/generate-pdf", { html: content }, {
+      const response = await axios.post("/generate-pdf", { html: content }, {
         responseType: "blob", // Expect binary response
       });
 
