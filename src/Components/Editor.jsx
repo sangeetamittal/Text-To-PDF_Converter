@@ -80,28 +80,28 @@ const QuillEditor = () => {
     setLoading(false);
   };
 
-  const handleViewPDF = async () => {
-    try {
-      console.log("Fetching generated PDF from backend..."); //Debugging step
+  // const handleViewPDF = async () => {
+  //   try {
+  //     console.log("Fetching generated PDF from backend..."); //Debugging step
 
-      const response = await fetch("http://localhost:5000/get-pdf", {
-        method: "GET",
-      });
+  //     const response = await fetch("http://localhost:5000/get-pdf", {
+  //       method: "GET",
+  //     });
 
-      if (!response.ok) {
-        throw new Error("Failed to fetch the PDF");
-      }
+  //     if (!response.ok) {
+  //       throw new Error("Failed to fetch the PDF");
+  //     }
 
-      const blob = await response.blob();
-      const url = URL.createObjectURL(blob);
+  //     const blob = await response.blob();
+  //     const url = URL.createObjectURL(blob);
 
-      window.open(url, "_blank"); // Opens PDF in a new tab
-      console.log("PDF opened successfully!"); //Debugging step
-    } catch (error) {
-      console.error("Error fetching PDF:", error);
-      alert("Failed to fetch the PDF. Please try again.");
-    }
-  };
+  //     window.open(url, "_blank"); // Opens PDF in a new tab
+  //     console.log("PDF opened successfully!"); //Debugging step
+  //   } catch (error) {
+  //     console.error("Error fetching PDF:", error);
+  //     alert("Failed to fetch the PDF. Please try again.");
+  //   }
+  // };
 
   return (
     <div style={{ maxWidth: "800px", margin: "auto", padding: "20px" }}>
@@ -111,9 +111,9 @@ const QuillEditor = () => {
         {loading ? "Generating PDF..." : "Download PDF"}
       </button>
 
-      <button onClick={handleViewPDF} style={{ padding: "10px", cursor: "pointer" }}>
+      {/* <button onClick={handleViewPDF} style={{ padding: "10px", cursor: "pointer" }}>
         View PDF
-      </button>
+      </button> */}
 
     </div>
   );
