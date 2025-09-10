@@ -25,7 +25,11 @@ exports.generatePDF = async (req, res) => {
         let formattedHtml = template.replace("{{content}}", html); // Inject Quill content
 
         console.log("🚀 Launching Puppeteer...");
-        const browser = await puppeteer.launch({ headless: "new" });
+        const browser = await puppeteer.launch({ 
+            headless: "new",
+            args: ['--no-sandbox', '--disable-setuid-sandbox'], 
+            userDataDir: '/tmp/puppeteer_cache',
+        });
         const page = await browser.newPage();
 
         // await page.evaluate(() => {
