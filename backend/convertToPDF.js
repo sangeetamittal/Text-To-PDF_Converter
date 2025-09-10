@@ -1,6 +1,16 @@
-const puppeteer = require("puppeteer");
+const puppeteer = require("puppeteer-core");
 const fs = require("fs");
 const path = require("path");
+
+let executablePath;
+if (process.env.RENDER) {
+  // Running on Render
+  executablePath = '/usr/bin/chromium-browser';
+} else {
+  // Running locally
+  const fullPuppeteer = require('puppeteer'); 
+  executablePath = fullPuppeteer.executablePath();
+}
 
 exports.generatePDF = async (req, res) => {
     const { html } = req.body;
@@ -24,11 +34,13 @@ exports.generatePDF = async (req, res) => {
         console.log("🔄 Applying content to template...");
         let formattedHtml = template.replace("{{content}}", html); // Inject Quill content
 
+        const isRender = process.env.RENDER || false;
         console.log("🚀 Launching Puppeteer...");
         const browser = await puppeteer.launch({ 
             headless: "new",
             args: ['--no-sandbox', '--disable-setuid-sandbox'], 
             userDataDir: '/tmp/puppeteer_cache',
+            executablePath
         });
         const page = await browser.newPage();
 
