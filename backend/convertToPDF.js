@@ -30,7 +30,7 @@ exports.generatePDF = async (req, res) => {
             headless: "new",
             args: ['--no-sandbox', '--disable-setuid-sandbox'], 
             userDataDir: '/tmp/puppeteer_cache',
-            executablePath: '/tmp/puppeteer/linux-*/chrome', 
+            executablePath: puppeteer.executablePath(), 
         });
         const page = await browser.newPage();
 
