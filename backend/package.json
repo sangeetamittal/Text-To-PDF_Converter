@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "build": "echo 'no build step'"
   },
   "keywords": [],
   "author": "",
@@ -25,7 +26,6 @@
     "pdf-parse": "^1.1.1",
     "pdf-poppler": "^0.2.1",
     "puppeteer": "^24.4.0",
-    "sharp": "^0.33.5",
-    "tesseract.js": "^6.0.0"
+    "sharp": "^0.33.5"
   }
 }
