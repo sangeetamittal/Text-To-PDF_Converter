@@ -1,16 +1,6 @@
-const puppeteer = require("puppeteer-core");
+const puppeteer = require("puppeteer");
 const fs = require("fs");
 const path = require("path");
-
-let executablePath;
-if (process.env.RENDER) {
-  // Running on Render
-  executablePath = '/usr/bin/chromium-browser';
-} else {
-  // Running locally
-  const fullPuppeteer = require('puppeteer'); 
-  executablePath = fullPuppeteer.executablePath();
-}
 
 exports.generatePDF = async (req, res) => {
     const { html } = req.body;
@@ -40,7 +30,6 @@ exports.generatePDF = async (req, res) => {
             headless: "new",
             args: ['--no-sandbox', '--disable-setuid-sandbox'], 
             userDataDir: '/tmp/puppeteer_cache',
-            executablePath
         });
         const page = await browser.newPage();
 

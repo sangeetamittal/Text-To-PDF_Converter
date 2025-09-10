@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "postinstall": "npx puppeteer install --ignore-cache",
+    "postinstall": "PUPPETEER_DOWNLOAD_PATH=/tmp/puppeteer npx puppeteer install",
     "build": "echo 'no build step'"
   },
   "keywords": [],
@@ -20,7 +20,6 @@
     "fs": "^0.0.1-security",
     "fs-extra": "^11.3.0",
     "path": "^0.12.7",
-    "puppeteer": "^24.20.0",
-    "puppeteer-core": "^24.19.0"
+    "puppeteer": "^24.20.0"
   }
 }
