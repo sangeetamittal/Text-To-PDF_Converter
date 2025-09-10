@@ -84,7 +84,7 @@ const QuillEditor = () => {
   //   try {
   //     console.log("Fetching generated PDF from backend..."); //Debugging step
 
-  //     const response = await fetch("http://localhost:5000/get-pdf", {
+  //     const response = await fetch("/get-pdf", {
   //       method: "GET",
   //     });
 
