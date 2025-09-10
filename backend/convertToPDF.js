@@ -24,12 +24,13 @@ exports.generatePDF = async (req, res) => {
         console.log("🔄 Applying content to template...");
         let formattedHtml = template.replace("{{content}}", html); // Inject Quill content
 
-        const isRender = process.env.RENDER || false;
+        console.log('Chromium executable path:', puppeteer.executablePath());
         console.log("🚀 Launching Puppeteer...");
         const browser = await puppeteer.launch({ 
             headless: "new",
             args: ['--no-sandbox', '--disable-setuid-sandbox'], 
             userDataDir: '/tmp/puppeteer_cache',
+            executablePath: '/tmp/puppeteer/linux-*/chrome', 
         });
         const page = await browser.newPage();
 
